@@ -1,0 +1,19 @@
+class Solution:
+    def minimumSize(self, nums: List[int], maxOperations: int) -> int:
+        low=1
+        high=max(nums)
+        ans=high
+
+        while low<=high:
+            mid=(low+high)//2
+
+            ops=0
+            for x in nums:
+                ops = ops+(x-1)//mid
+
+            if ops<=maxOperations:
+                ans=mid
+                high=mid-1
+            else:
+                low=mid+1
+        return ans 
